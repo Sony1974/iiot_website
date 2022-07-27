@@ -12,10 +12,21 @@
   {{item.machine}} - {{item.created}} - {{item.category}} - {{item.description}}<br>
  {% endfor %}
 
+<hr>
+ <h2>Notification Form</h2>
  <form action="" method="POST">
     {% csrf_token %}
-    {{notif_form}} 
+    <label for="mc">Machine</label><br>
+    {{notif_form.machine}} <br><br>
+
+    <label for="mc">Category</label><br>
+    {{notif_form.category}} <br><br>
+
+    <label for="mc">Description</label><br>
+    {{notif_form.description}} <br><br>
+
 <button type="submit">Save</button>
+<hr>
  </form>
 
 </body>
