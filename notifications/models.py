@@ -8,5 +8,9 @@ class Notifications(models.Model):
     description = models.TextField(max_length=250)
     created = models.DateField(auto_now=True)
 
+    class Meta:
+        verbose_name    = 'notification'
+        verbose_name_plural = 'notifications'
+
     def __str__(self):
         return self.machine
