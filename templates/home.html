@@ -5,12 +5,37 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home</title>
+
+    <style>
+        table,
+        th,
+        td {
+            border: 1px solid black;
+        }
+        </style>
 </head>
 <body>
  <h2>Welcome to the updated IIoT Startup Project</h2>   
- {%  for item in notif %}
-  {{item.machine}} - {{item.created}} - {{item.category}} - {{item.description}}<br>
- {% endfor %}
+<hr>
+<h2>List of Notifications</h2>
+<table>
+    <tr>
+        <th>Machine</th>
+        <th>Created</th>
+        <th>Category</th>
+        <th>Description</th>
+    </tr>
+    {%  for item in notif %}
+    <tr>
+        
+        <td>{{item.machine}}</td>
+        <td>{{item.created}}</td>
+        <td>{{item.category}}</td>
+        <td>{{item.description}}</td>
+        
+    </tr>
+    {% endfor %}
+</table>
 
 <hr>
  <h2>Notification Form</h2>
