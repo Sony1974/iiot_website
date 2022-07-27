@@ -14,16 +14,24 @@
 
 <hr>
  <h2>Notification Form</h2>
- <form action="" method="POST">
+ <form action="{% url 'notif_form' %}" method="POST">
+
     {% csrf_token %}
-    <label for="mc">Machine</label><br>
-    {{notif_form.machine}} <br><br>
 
-    <label for="mc">Category</label><br>
-    {{notif_form.category}} <br><br>
+    <div>
+        <label>Machine</label><br>
+        {{notif_form.machine}} <br><br>
+    </div>
 
-    <label for="mc">Description</label><br>
-    {{notif_form.description}} <br><br>
+    <div>
+        <label>Category</label><br>
+        {{notif_form.category}} <br><br>
+    </div>
+
+    <div>
+        <label for="">Description</label><br>
+        {{notif_form.description}} <br><br>        
+    </div>
 
 <button type="submit">Save</button>
 <hr>
