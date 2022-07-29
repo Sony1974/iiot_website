@@ -11,6 +11,7 @@ class Notifications(models.Model):
     class Meta:
         verbose_name    = 'notification'
         verbose_name_plural = 'notifications'
+        ordering = ['-created']
 
     def __str__(self):
         return self.machine
