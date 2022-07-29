@@ -3,8 +3,13 @@ from django.db import models
 # Create your models here.
 
 class Notifications(models.Model):
+
+    CATEGORY_CHOICES = (
+        ('Electrical', 'Electrical'),
+        ('Mechanical', 'Mechanical'),
+    )
     machine = models.CharField(max_length=10)
-    category = models.CharField(max_length=10)
+    category = models.CharField(max_length=10, choices=CATEGORY_CHOICES)
     description = models.TextField(max_length=250)
     created = models.DateField(auto_now=True)
 
