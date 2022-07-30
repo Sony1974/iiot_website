@@ -9,7 +9,8 @@ from notifications.forms import NofificationForm
 #     return HttpResponse('Welcome to IIoT Startup Project')
 
 def home(request):
-    notif = Notifications.objects.all()
+    #notif = Notifications.objects.all()
+    notif = Notifications.objects.order_by('-created')[:5]
     form = NofificationForm()
 
     context = { 
