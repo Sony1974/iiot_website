@@ -21,5 +21,7 @@ from . import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.home, name='home'),
+    path('notif_list/', views.notif_list, name='notif_list'),
+    path('notif_form/', views.notif_form, name='notif_form'),
     path('notifications/', include('notifications.urls')),
 ]

@@ -1,68 +1,90 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home</title>
+{% extends 'base.html'%}
 
-    <style>
-        table,
-        th,
-        td {
-            border: 1px solid rgb(244, 91, 3);
-        }
+{% load static %}
+
+{% block content %}
 
 
-        </style>
-</head>
-<body>
- <h2>Welcome to IIoT Startup Project</h2>
- <p>Integrating Industrial Internet of Things and AI in Manufacturing</p>   
-<hr>
-<h2>List of Notifications (Last 5)</h2>
-<table>
-    <tr>
-        <th>Machine</th>
-        <th>Created</th>
-        <th>Category</th>
-        <th>Description</th>
-    </tr>
-    {%  for item in notif %}
-    <tr>
-        <td>{{item.machine}}</td>
-        <td>{{item.created}}</td>
-        <td>{{item.category}}</td>
-        <td>{{item.description}}</td>
-        
-    </tr>
-    {% endfor %}
-</table>
 
-<hr>
- <h2>Notification Form</h2>
- <form action="{% url 'notif_form' %}" method="POST">
 
-    {% csrf_token %}
+<!-- ========================= SECTION MAIN ========================= -->
 
-    <div>
-        <label>Machine</label><br>
-        {{notif_form.machine}} <br><br>
-    </div>
+<!-- Banner can be added here -->
 
-    <div>
-        <label>Category</label><br>
-        {{notif_form.category}} <br><br>
-    </div>
+<!-- ========================= SECTION MAIN END// ========================= -->
 
-    <div>
-        <label for="">Description</label><br>
-        {{notif_form.description}} <br><br>        
-    </div>
 
-<button type="submit">Save</button>
-<hr>
- </form>
+<!-- ========================= CUSTOM STYLE  ========================= -->
+<style>
+    .box {
+      padding-top: 10px; 
+      padding-bottom: 10px;
+      padding-left: 10px; 
+      width: 100%;
+    }
 
-</body>
-</html>
+    table,
+    th,
+    td {
+        border: 1px solid #eb8d55;
+    }
+    </style>
+<!-- ========================= CUSTOM STYLE END// ========================= -->
+
+
+<!-- ========================= SECTION  ========================= -->
+<div class="box">
+    <section>
+        <h2>Welcome to IIoT Startup Project</h2>
+        <p>Integrating Industrial Internet of Things and AI in Plant Maintenance</p>   
+        <hr>
+        <h2>List of Notifications (Last 5)</h2>
+        <table>
+            <tr>
+                <th>Machine</th>
+                <th>Created</th>
+                <th>Category</th>
+                <th>Description</th>
+            </tr>
+            {%  for item in notif %}
+            <tr>
+                <td>{{item.machine}}</td>
+                <td>{{item.created}}</td>
+                <td>{{item.category}}</td>
+                <td>{{item.description}}</td>
+                
+            </tr>
+            {% endfor %}
+        </table>
+        <br>
+    </section>
+</div>
+
+<div class="box">
+    <section>
+        <h2>Notification Summary</h2>
+
+        <table>
+            <tr>
+
+                <th>Category</th>
+                <th>Notifications</th>
+            </tr>
+            <tr>
+                <td>Electrical</td>
+                <td>{{notif_electrical}}</td>
+            </tr>
+            <tr>
+                <td>Mechanical</td>
+                <td>{{notif_mechanical}}</td>
+            </tr>
+            <tr>
+                <td>Total</td>
+                <td>{{notif_total}}</td>
+            </tr>
+        </table>
+
+    </section>
+</div>
+<!-- ========================= SECTION  END// ========================= -->
+{% endblock %}

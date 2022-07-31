@@ -11,7 +11,7 @@ class Notifications(models.Model):
     machine = models.CharField(max_length=10)
     category = models.CharField(max_length=10, choices=CATEGORY_CHOICES)
     description = models.TextField(max_length=250)
-    created = models.DateField(auto_now=True)
+    created = models.DateTimeField(auto_now=True)
 
     class Meta:
         verbose_name    = 'notification'

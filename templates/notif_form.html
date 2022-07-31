@@ -1,0 +1,71 @@
+{% extends 'base.html'%}
+
+{% load static %}
+
+{% block content %}
+
+
+
+
+<!-- ========================= SECTION MAIN ========================= -->
+
+<!-- Banner can be added here -->
+
+<!-- ========================= SECTION MAIN END// ========================= -->
+
+
+<!-- ========================= CUSTOM STYLE  ========================= -->
+<style>
+    .box {
+      padding-top: 10px; 
+      padding-bottom: 10px;
+      padding-left: 10px; 
+      width: 100%;
+    }
+
+    table,
+    th,
+    td {
+        border: 1px solid #eb8d55;
+    }
+    </style>
+<!-- ========================= CUSTOM STYLE END// ========================= -->
+
+
+<!-- ========================= SECTION  ========================= -->
+<div class="box">
+    <section>
+        <h2>Welcome to IIoT Startup Project</h2>
+        <p>Integrating Industrial Internet of Things and AI in Plant Maintenance</p>   
+    
+        <hr>
+   
+        <h2>Notification Form</h2>
+        <form action="{% url 'form' %}" method="POST">
+    
+        {% csrf_token %}
+    
+        <div>
+            <label>Machine</label><br>
+            {{notif_form.machine}} <br><br>
+        </div>
+    
+        <div>
+            <label>Category</label><br>
+            {{notif_form.category}} <br><br>
+        </div>
+    
+        <div>
+            <label for="">Description</label><br>
+            {{notif_form.description}} <br><br>        
+        </div>
+    
+            <button type="submit">Save</button>
+
+        </form>
+    
+    </section>
+</div>
+<!-- ========================= SECTION  END// ========================= -->
+
+{% endblock %}

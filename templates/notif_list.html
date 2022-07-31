@@ -1,0 +1,65 @@
+{% extends 'base.html'%}
+
+{% load static %}
+
+{% block content %}
+
+
+
+
+<!-- ========================= SECTION MAIN ========================= -->
+
+<!-- Banner can be added here -->
+
+<!-- ========================= SECTION MAIN END// ========================= -->
+
+
+<!-- ========================= CUSTOM STYLE  ========================= -->
+<style>
+    .box {
+      padding-top: 20px; 
+      padding-bottom: 20px;
+      padding-left: 10px; 
+      width: 100%;
+    }
+
+    table,
+    th,
+    td {
+        border: 1px solid #eb8d55;
+    }
+    </style>
+<!-- ========================= CUSTOM STYLE END// ========================= -->
+
+
+<!-- ========================= SECTION  ========================= -->
+<div class="box">
+    <section>
+        <h2>Welcome to IIoT Startup Project</h2>
+        <p>Integrating Industrial Internet of Things and AI in Plant Maintenance</p>   
+    <hr>
+    <h2>List of all notifications</h2>
+    <table>
+        <tr>
+            <th>Machine</th>
+            <th>Created</th>
+            <th>Category</th>
+            <th>Description</th>
+        </tr>
+        {%  for item in notif %}
+        <tr>
+            <td>{{item.machine}}</td>
+            <td>{{item.created}}</td>
+            <td>{{item.category}}</td>
+            <td>{{item.description}}</td>
+            
+        </tr>
+        {% endfor %}
+    </table>
+    
+   
+    </section>
+</div>
+<!-- ========================= SECTION  END// ========================= -->
+
+{% endblock %}
