@@ -24,13 +24,15 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
+#SECRET_KEY = config('SECRET_KEY')  # Python decouple version 
 SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY','<replace me with your own fallback secret key>')
 
 # SECURITY WARNING: don't run with debug turned on in production!
+#DEBUG = config('DEBUG', default=True, cast=bool) # True
 DEBUG = os.environ.get('DJANGO_DEBUG', '1').lower() in ['true', 't', '1']
 
 
-ALLOWED_HOSTS = ['IIoT-Startup-dev.us-west-2.elasticbeanstalk.com','127.0.0.1','scciiot.com']
+ALLOWED_HOSTS = ['IIoT-Startup-dev.us-west-2.elasticbeanstalk.com','127.0.0.1','scciiot.com','*']
 
 # Application definition
 
@@ -43,6 +45,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'notifications',
     'crispy_forms',
+    'storages',
 ]
 
 MIDDLEWARE = [
@@ -147,7 +150,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Asia/Riyadh' # UTC'
 
 USE_I18N = True
 
@@ -163,11 +166,49 @@ CRISPY_TEMPLATE_PACK = 'bootstrap4'
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
 
+# ================================================================================
+# As we are moving to AWS S3 bucket we comment this section now
+
 STATIC_URL = '/static/'
 STATIC_ROOT = BASE_DIR /'static'
 STATICFILES_DIRS = [ 
     'iiot_website/static',
 ]
+
+# ===============================================================================
+# Static file configuration for AWS S3 Bucket - From now the Django project will access static files directlty from AWS S3 bucket with below setup
+# AWS S3 Static Files Configuration
+
+
+# AWS_ACCESS_KEY_ID = config('AWS_ACCESS_KEY_ID')
+# AWS_SECRET_ACCESS_KEY = config('AWS_SECRET_ACCESS_KEY')
+# AWS_STORAGE_BUCKET_NAME = config('AWS_STORAGE_BUCKET_NAME')
+# AWS_S3_CUSTOM_DOMAIN = '%s.s3.amazonaws.com' % AWS_STORAGE_BUCKET_NAME
+# AWS_S3_OBJECT_PARAMETERS = {
+#     'CacheControl': 'max-age=86400',
+# }
+# AWS_S3_FILE_OVERWRITE = False
+# AWS_DEFAULT_ACL = 'public-read'
+# AWS_LOCATION = 'static'
+
+# STATICFILES_DIRS = [
+#     'iiot_website/static',
+# ]
+# STATIC_URL = 'https://%s/%s/' % (AWS_S3_CUSTOM_DOMAIN, AWS_LOCATION)
+# STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+
+
+# Default media storgae files location
+
+
+# DEFAULT_FILE_STORAGE = 'iiot_website.media_storages.MediaStorage'
+
+# media files configuration
+
+# MEDIA_URL = '/media/'
+# MEDIA_ROOT = BASE_DIR /'media'
+
+
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
