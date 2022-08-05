@@ -32,7 +32,7 @@ DEBUG = config('DEBUG', default=True, cast=bool) # True
 #DEBUG = os.environ.get('DJANGO_DEBUG', '1').lower() in ['true', 't', '1']
 
 
-ALLOWED_HOSTS = ['IIoT-Startup-dev.us-west-2.elasticbeanstalk.com','127.0.0.1','scciiot.com','*']
+ALLOWED_HOSTS = ['scciiot-dev.us-west-2.elasticbeanstalk.com','127.0.0.1','scciiot.com','*']
 
 # Application definition
 
