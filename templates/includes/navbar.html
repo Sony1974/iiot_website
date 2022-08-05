@@ -49,21 +49,21 @@
 
       <ul class="nav navbar-nav navbar-right">
         {% if user.id is None%}
-        <li class="nav-item">
-            <a class="nav-link" href="" style="color: rgb(229, 255, 0);">Welcome Guest !</a> 
-          </li>
-
-          <li class="nav-item">
-            <a class="nav-link" href="" style="color: #55a0eb;"> Login</a>
-          </li>
+        <div class="widget-header">
+            <small class="" style="color: rgb(229, 255, 0);">Welcome Guest!</small>
+            <div> 
+                <a href="{% url 'login' %}" style="color: #55a0eb;">Sign in</a> <span class="dark-transp"> | </span>
+                <a href="{% url 'register' %}" style="color: #55a0eb;"> Register</a>
+            </div>
+        </div>
         {% else %}
-        <li class="nav-item">
-            <a  class="nav-link" href="#" style="color: chartreuse;">Welcome {{user.first_name}} !</a> 
-          </li>
-
-          <li class="nav-item">
-            <a class="nav-link" href="" style="color: #55a0eb;"> Logout</a>
-          </li>
+        <div class="widget-header">
+            <small class="" style="color: chartreuse;" >Welcome {{user.first_name}}!</small>
+            <div> 
+                <a href="{% url 'dashboard' %}" style="color: #55a0eb;">Dashboard</a> <span class="dark-transp"> | </span>
+                <a href="{% url 'logout' %}" style="color: #55a0eb;"> Logout</a>
+            </div>
+        </div>
         {% endif %}
 
       </ul>

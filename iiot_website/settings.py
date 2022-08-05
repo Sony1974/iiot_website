@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'notifications',
     'crispy_forms',
     'storages',
+    'accounts',
 ]
 
 MIDDLEWARE = [
@@ -77,6 +78,10 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'iiot_website.wsgi.application'
+
+
+# Using custome usermode for this project
+AUTH_USER_MODEL = 'accounts.Account'
 
 # STEP 1
 # Database
